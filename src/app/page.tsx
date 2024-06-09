@@ -1,11 +1,13 @@
+import Output from "@/components/home/Output";
+import UserInput from "@/components/home/UserInput";
 import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
 import { ChevronRight, Star } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="group w-full flex flex-col items-center justify-center space-y-4 mb-4 text-center">
+    <main className="relative grid grid-cols-2 gap-12 p-24">
+      <div className="col-span-full group w-full flex flex-col items-center justify-center space-y-4 mb-4 text-center">
         <Link
           href="https://github.com/abhijeetpalanki/Biogen"
           target="_blank"
@@ -26,6 +28,9 @@ export default function Home() {
           who you are.
         </p>
       </div>
+
+      <UserInput />
+      <Output />
     </main>
   );
 }
