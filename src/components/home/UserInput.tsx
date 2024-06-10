@@ -246,7 +246,7 @@ const UserInput = () => {
                 )}
               />
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
               <FormField
                 control={form.control}
                 name="type"
@@ -297,7 +297,7 @@ const UserInput = () => {
                           <SelectItem value="sarcastic">Sarcastic</SelectItem>
                           <SelectItem value="funny">Funny</SelectItem>
                           <SelectItem value="passionate">Passionate</SelectItem>
-                          <SelectItem value="thoughful">Thoughful</SelectItem>
+                          <SelectItem value="thoughtful">Thoughtful</SelectItem>
                         </SelectContent>
                       </Select>
                     </FormControl>

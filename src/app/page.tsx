@@ -8,8 +8,8 @@ import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
 
 export default function Home() {
   return (
-    <main className="relative grid grid-cols-2 gap-12 p-24">
-      <div className="col-span-full group w-full flex flex-col items-center justify-center space-y-4 mb-4 text-center">
+    <main className="relative grid grid-cols-1 slg:grid-cols-2 gap-12 px-4 py-12 sm:py-16 sm:px-8 md:px-10 slg:p-16 lg:p-24">
+      <div className="col-span-full group w-full flex flex-col items-center justify-center space-y-2 sm:space-y-4 mb-4 text-center">
         <Link
           href="https://github.com/abhijeetpalanki/Biogen"
           target="_blank"
@@ -22,10 +22,10 @@ export default function Home() {
             <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
           </AnimatedGradientText>
         </Link>
-        <h1 className="font-extrabold uppercase text-7xl text-center w-full lg:w-[90%] mx-auto pt-4">
+        <h1 className="font-extrabold uppercase text-4xl md:text-5xl slg:text-6xl lg:text-7xl text-center w-full lg:w-[90%] mx-auto pt-4">
           Craft the perfect bio in seconds!
         </h1>
-        <p className="text-lg text-accent">
+        <p className="text-sm sm:text-base md:text-lg text-accent">
           Just answer a few questions, and we'll generate a bio that captures
           who you are.
         </p>

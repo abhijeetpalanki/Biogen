@@ -28,11 +28,11 @@ const Output = () => {
       {loading ? (
         <Skeleton className="w-full h-full" />
       ) : (
-        <ul className="flex flex-col items-start justify-start space-y-12 p-16">
+        <ul className="flex flex-col items-start justify-start space-y-8 sm:space-y-12 p-8 pt-12 xs:p-8 xs:py-12 sm:p-12 lg:p-16">
           {output.data.map((data, index) => (
             <li
               key={index}
-              className="w-full text-base border border-primary/20 rounded-md p-4 relative bg-background rounded-br-none"
+              className="w-full text-sm xs:text-base border border-primary/20 rounded-md p-4 relative bg-background rounded-br-none"
             >
               {data.bio}
               <span className="absolute top-[99%] right-0">
