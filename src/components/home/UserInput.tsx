@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -30,9 +29,12 @@ import {
 import MetaIcon from "../icons/Meta";
 import MistralIcon from "../icons/Mistral";
 import { Slider } from "../ui/slider";
-import { Info } from "lucide-react";
+import { Info, Loader2 } from "lucide-react";
 import { Textarea } from "../ui/textarea";
 import { Switch } from "../ui/switch";
+import { generateBio } from "@/app/actions";
+import { BioContext } from "@/context/BioContext";
+import { useContext } from "react";
 
 const formSchema = z.object({
   model: z.string().min(1, "Model is required!"),
@@ -64,6 +66,8 @@ const formSchema = z.object({
 });
 
 const UserInput = () => {
+  const { loading, setLoading, setOutput } = useContext(BioContext);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -76,8 +80,29 @@ const UserInput = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
+
+    const userInputValues = `
+      User Input: ${values.content},
+      Bio Type: ${values.type},
+      Bio Type: ${values.type},
+      Add Emojis: ${values.emojis},
+    `;
+
+    try {
+      const { data } = await generateBio(
+        userInputValues,
+        values.temperature,
+        values.model
+      );
+
+      setOutput(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
   }
 
   return (
@@ -301,8 +326,13 @@ const UserInput = () => {
               />
             </div>
           </fieldset>
-          <Button className="rounded" type="submit">
-            Generate
+
+          <Button className="rounded" type="submit" disabled={loading}>
+            {loading ? (
+              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+            ) : (
+              "Generate"
+            )}
           </Button>
         </form>
       </Form>

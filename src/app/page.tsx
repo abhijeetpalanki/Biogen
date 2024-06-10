@@ -1,8 +1,10 @@
+import Link from "next/link";
+import { ChevronRight, Star } from "lucide-react";
+import { BioProvider } from "@/context/BioContext";
+
 import Output from "@/components/home/Output";
 import UserInput from "@/components/home/UserInput";
 import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
-import { ChevronRight, Star } from "lucide-react";
-import Link from "next/link";
 
 export default function Home() {
   return (
@@ -29,8 +31,10 @@ export default function Home() {
         </p>
       </div>
 
-      <UserInput />
-      <Output />
+      <BioProvider>
+        <UserInput />
+        <Output />
+      </BioProvider>
     </main>
   );
 }
